@@ -7,36 +7,72 @@
  * @author mustafaademovic
  *
  */
-public class Staff extends Person {
-	private String mail;
-	private String function;
+public class Staff {
+	protected String name;
+	protected String surname;
+	protected String mail;
+	protected String function;
 
 	// Konstruktor
 	public Staff(String name, String surname, String mail, String function) {
-		super(name, surname);
+		this.name = name;
+		this.surname = surname;
 		this.mail = mail;
 		this.function = function;
 
 	}
+	
+	// Ovaj konstruktor je kopija jer imam više ljudi s ovim osobinama koji rade
+	// u klubu
+	public Staff(Staff other) {
+		this.name = other.name;
+		this.surname = other.surname;
+		this.mail = other.mail;
+		this.function = other.function;
+	}
 
 	// Getter
+	public String getName() {
+		return name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
 	public String getMail() {
 		return mail;
 	}
 
+	public String getFunction() {
+		return function;
+	}
+
 	// Setter
+	public void setName(String name){
+		this.name = name;
+	}
+	public void setSurname(String surname){
+		this.surname = surname;
+	}
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-
-	/*
-	 * Metoda prima iz klase Person osobine Ime i Prezime i dodaje kontakt(mail)
-	 * i funkciju i ispisuje sve skupa
-	 */
-	@Override
-	public String toString() {
-		return "\nStaff:" + super.toString() + "\nMail: " + mail
-				+ "\nFunction: " + function;
+	public void setFunction(String function){
+		this.function = function;
 	}
 
-}
+	/**
+	 * Metoda treba kada je korisnik pozove da ispiše opbjekat u kojem pozivamo
+	 * ove osobine(ime, prezime, mail, funkciju)
+	 * 
+	 * @return
+	 */
+	public String toString() {
+		return "\nStaff:\nName: " + name + "\nSurname: " + surname + "\nMail: "
+				+ mail + "\nFunction: " + function;
+	}//Kraj metode toString
+	
+	
+
+}//Kraj klase Staff
